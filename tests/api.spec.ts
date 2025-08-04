@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
+import dotenv from 'dotenv';
+dotenv.config(); // 👈 this loads .env variables
 
-const BASE_URL = 'https://reqres.in';
+const BASE_URL = process.env.BASE_URL!;
 const HEADERS = {
-  'x-api-key': 'reqres-free-v1'
+  'x-api-key': process.env.X_API_KEY!
 };
 
 test('GET - List Users (Pagination)', async ({ request }) => {
@@ -18,7 +20,7 @@ test('POST - Create User', async ({ request }) => {
   const res = await request.post(`${BASE_URL}/api/users`, {
     headers: HEADERS,
     data: {
-      name: 'wahaaj',
+      name: 'Huzaifa',
       job: 'QA Engineer'
     }
   });
@@ -31,7 +33,7 @@ test('PUT - Update User', async ({ request }) => {
   const res = await request.put(`${BASE_URL}/api/users/2`, {
     headers: HEADERS,
     data: {
-      name: 'wahaaj',
+      name: 'Rizwan',
       job: 'Senior QA'
     }
   });
