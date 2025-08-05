@@ -6,11 +6,10 @@ const HEADERS = {
 };
 
 test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
-  // Step 1: Create user (POST)
   const createRes = await request.post(`${BASE_URL}/api/users`, {
     headers: HEADERS,
     data: {
-      name: 'Wahaaj',
+      name: 'Huzaifa',
       job: 'QA Engineer'
     }
   });
@@ -23,7 +22,6 @@ test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
   console.log('Created User ID:', userId);
   console.log('POST Response JSON:', createBody);
 
-  // Step 2: Try to GET the same user (will likely be 404 due to fake API)
   const getRes = await request.get(`${BASE_URL}/api/users/${userId}`, {
     headers: HEADERS
   });
@@ -32,6 +30,5 @@ test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
   const getBody = await getRes.json();
   console.log('GET Response JSON:', getBody);
 
-  // Check status (may be 404 due to non-persistent API)
   expect([200, 404]).toContain(getRes.status());
 });

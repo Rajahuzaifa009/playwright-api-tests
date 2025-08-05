@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
-dotenv.config(); // 👈 this loads .env variables
+dotenv.config();
 
 const BASE_URL = process.env.BASE_URL!;
 const HEADERS = {

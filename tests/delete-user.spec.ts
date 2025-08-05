@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const BASE_URL = 'https://reqres.in';
 const HEADERS = {
-  'x-api-key': 'reqres-free-v1' // Add this header
+  'x-api-key': 'reqres-free-v1'
 };
 
 test('DELETE - Delete User', async ({ request }) => {
@@ -18,5 +18,5 @@ test('DELETE - Delete User', async ({ request }) => {
   }
   console.log('DELETE Response JSON:', body);
 
-  expect(res.status()).toBe(204); // No Content
+  expect(res.status()).toBe(204);
 });
