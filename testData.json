@@ -1,0 +1,17 @@
+{
+  "updateUser": {
+    "name": "Rizwan",
+    "job": "Senior QA"
+  },
+  "createUser": {
+    "name": "Huzaifa",
+    "job": "Junior QA"
+  },
+  "registerUser": {
+    "email": "huzaifa@example.com",
+    "password": "secure123"
+  },
+  "invalidRegisterUser": {
+    "email": "huzaifa@example.com"
+  }
+}

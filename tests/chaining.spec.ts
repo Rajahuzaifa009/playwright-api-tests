@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import testData from '../testData.json';
 
 const BASE_URL = 'https://reqres.in';
 const HEADERS = {
@@ -8,10 +9,7 @@ const HEADERS = {
 test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
   const createRes = await request.post(`${BASE_URL}/api/users`, {
     headers: HEADERS,
-    data: {
-      name: 'Huzaifa',
-      job: 'QA Engineer'
-    }
+    data: testData.createUser
   });
 
   expect(createRes.status()).toBe(201);

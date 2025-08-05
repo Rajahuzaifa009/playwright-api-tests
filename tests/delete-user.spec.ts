@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import testData from '../testData.json';
 
 const BASE_URL = 'https://reqres.in';
 const HEADERS = {
@@ -7,7 +8,8 @@ const HEADERS = {
 
 test('DELETE - Delete User', async ({ request }) => {
   const res = await request.delete(`${BASE_URL}/api/users/2`, {
-    headers: HEADERS
+    headers: HEADERS,
+    data: testData.updateUser
   });
 
   let body;

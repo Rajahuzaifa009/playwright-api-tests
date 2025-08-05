@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import testData from '../testData.json';
 
 const BASE_URL = 'https://reqres.in';
 const HEADERS = {
@@ -6,8 +7,8 @@ const HEADERS = {
 };
 
 const users = [
+  testData.createUser,
   { name: 'Yousaf', job: 'Developer' },
-  { name: 'Huzaifa', job: 'Designer' },
   { name: 'Rizwan', job: 'Manager' }
 ];
 

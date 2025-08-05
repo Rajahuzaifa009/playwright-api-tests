@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import testData from '../testData.json';
 
 const BASE_URL = 'https://reqres.in';
 const HEADERS = {
@@ -7,7 +8,8 @@ const HEADERS = {
 
 test('GET - Invalid User should return 404', async ({ request }) => {
   const res = await request.get(`${BASE_URL}/api/users/99999`, {
-    headers: HEADERS
+    headers: HEADERS,
+    data: testData.updateUser
   });
 
   let body;

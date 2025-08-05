@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
-dotenv.config();
+import testData from '../testData.json';
+dotenv.config(); // 👈 this loads .env variables
 
 const BASE_URL = process.env.BASE_URL!;
 const HEADERS = {
@@ -12,35 +13,26 @@ test('GET - List Users (Pagination)', async ({ request }) => {
     headers: HEADERS
   });
   console.log('GET Status:', res.status());
-  const body = await res.json();
-  console.log('GET Response JSON:', body);
+  console.log('GET Body:', await res.text());
   expect(res.status()).toBe(200);
 });
 
 test('POST - Create User', async ({ request }) => {
   const res = await request.post(`${BASE_URL}/api/users`, {
     headers: HEADERS,
-    data: {
-      name: 'Huzaifa',
-      job: 'QA Engineer'
-    }
+    data: testData.createUser
   });
   console.log('POST Status:', res.status());
-  const body = await res.json();
-  console.log('POST Response JSON:', body);
+  console.log('POST Body:', await res.text());
   expect(res.status()).toBe(201);
 });
 
 test('PUT - Update User', async ({ request }) => {
   const res = await request.put(`${BASE_URL}/api/users/2`, {
     headers: HEADERS,
-    data: {
-      name: 'Rizwan',
-      job: 'Senior QA'
-    }
+    data: testData.updateUser
   });
   console.log('PUT Status:', res.status());
-  const body = await res.json();
-  console.log('PUT Response JSON:', body);
+  console.log('PUT Body:', await res.text());
   expect(res.status()).toBe(200);
 });
