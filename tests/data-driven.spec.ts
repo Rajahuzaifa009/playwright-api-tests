@@ -21,6 +21,7 @@ for (const user of users) {
     });
 
     const body = await res.json();
+    console.log('POST Response JSON:', body);
 
     // Step 3: Assertions
     expect(res.status()).toBe(201);

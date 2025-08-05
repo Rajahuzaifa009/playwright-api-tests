@@ -12,7 +12,8 @@ test('GET - List Users (Pagination)', async ({ request }) => {
     headers: HEADERS
   });
   console.log('GET Status:', res.status());
-  console.log('GET Body:', await res.text());
+  const body = await res.json();
+  console.log('GET Response JSON:', body);
   expect(res.status()).toBe(200);
 });
 
@@ -25,7 +26,8 @@ test('POST - Create User', async ({ request }) => {
     }
   });
   console.log('POST Status:', res.status());
-  console.log('POST Body:', await res.text());
+  const body = await res.json();
+  console.log('POST Response JSON:', body);
   expect(res.status()).toBe(201);
 });
 
@@ -38,6 +40,7 @@ test('PUT - Update User', async ({ request }) => {
     }
   });
   console.log('PUT Status:', res.status());
-  console.log('PUT Body:', await res.text());
+  const body = await res.json();
+  console.log('PUT Response JSON:', body);
   expect(res.status()).toBe(200);
 });

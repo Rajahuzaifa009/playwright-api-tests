@@ -10,5 +10,13 @@ test('DELETE - Delete User', async ({ request }) => {
     headers: HEADERS
   });
 
+  let body;
+  try {
+    body = await res.json();
+  } catch (e) {
+    body = null;
+  }
+  console.log('DELETE Response JSON:', body);
+
   expect(res.status()).toBe(204); // No Content
 });

@@ -21,6 +21,7 @@ test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
   const userId = createBody.id;
 
   console.log('Created User ID:', userId);
+  console.log('POST Response JSON:', createBody);
 
   // Step 2: Try to GET the same user (will likely be 404 due to fake API)
   const getRes = await request.get(`${BASE_URL}/api/users/${userId}`, {
@@ -28,6 +29,8 @@ test('POST → GET: Chaining user creation and fetch', async ({ request }) => {
   });
 
   console.log('GET status:', getRes.status());
+  const getBody = await getRes.json();
+  console.log('GET Response JSON:', getBody);
 
   // Check status (may be 404 due to non-persistent API)
   expect([200, 404]).toContain(getRes.status());

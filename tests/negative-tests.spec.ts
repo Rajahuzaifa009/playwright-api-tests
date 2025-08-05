@@ -10,5 +10,13 @@ test('GET - Invalid User should return 404', async ({ request }) => {
     headers: HEADERS
   });
 
+  let body;
+  try {
+    body = await res.json();
+  } catch (e) {
+    body = null;
+  }
+  console.log('GET Response JSON:', body);
+
   expect(res.status()).toBe(404);
 });
